@@ -31,6 +31,11 @@
         public const string GroupVideo = "/groups/{groupId}/videos/{clipId}";
         public const string GroupUsers = "/groups/{groupId}/users";
 
+        public const string Folders = "/projects";
+        public const string Folder = "/projects/{projectId}";
+        public const string FolderVideos = "/projects/{projectId}/videos";
+
+
         public const string UploadTicket = "/me/videos";
         public const string UploadTicketReplace = "/me/videos/{clipId}";
         public const string UploadTicketStatus = "/uploadtickets/{ticketId}";
@@ -51,7 +56,11 @@
         public const string UserGroupMemberships = "/users/{userId}/groups";
         public const string UserGroupMembership = "/users/{userId}/groups/{groupId}";
         public const string UserFeed = "/users/{userId}/feed";
+
         public const string UserFolders = "/users/{userId}/projects";
+        public const string UserFolder = "/users/{userId}/projects/{projectId}";
+        public const string UserFolderVideos = "/users/{userId}/projects/{projectId}/videos";
+
         public const string UserFollowers = "/users/{userId}/followers";
         public const string UserFollowing = "/users/{userId}/following";
         public const string UserFollow = "/users/{userId}/following/{followingUserId}";
