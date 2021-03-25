@@ -1,6 +1,8 @@
 vimeo-dot-net
 =============
 
+Thiis is a fork from vimeo-dot-net by mfilippov. I jast added a couple of methods I neede for my projects.
+
 A .NET 4.5/.NET Standard 1.3 wrapper for Vimeo API v3.0. Provides asynchronous API operations.
 
 [NuGet URL](https://www.nuget.org/packages/VimeoDotNet/)
