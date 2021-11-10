@@ -7,7 +7,21 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/magicbruno/vimeo-dot-net</PackageProjectUrl>
     <RepositoryUrl>https://github.com/magicbruno/vimeo-dot-net</RepositoryUrl>
+    <licenseUrl>https://github.com/magicbruno/vimeo-dot-net/blob/master/LICENSE</licenseUrl>
+    <description>
+      .NET wrapper around Vimeo's REST API v3.0.
+
+      Features:
+      - Account information retrieval
+      - Video retrieval
+      - Resumable video file upload
+    </description>
+    <releaseNotes>Add GetAllVideoInAlbum e GetAllVideoInFolder</releaseNotes>
     <PackageTags>vimeo api</PackageTags>
+    <PackageVersion>1.0.2</PackageVersion>
+    <Version>1.0.2</Version>
+    <PackageId>VimeoDotNet</PackageId>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DocumentationFile>bin\Release\VimeoDotNet.xml</DocumentationFile>
@@ -19,5 +33,11 @@
     <PackageReference Include="JetBrains.Annotations" Version="2018.3.0" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net45" Version="1.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 </Project>

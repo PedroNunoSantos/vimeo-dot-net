@@ -135,7 +135,7 @@ namespace VimeoDotNet
         }
 
         /// <inheritdoc />
-        public async Task<Paginated<Video>> GetAllVideoInFolderAsync(UserId userid, int projectId, int? page = null,
+        public async Task<Paginated<Video>> GetAllVideoInFolderAsync(UserId userid, long projectId, int? page = null,
             int? perPage = null, GetVideoByTagSort? sort = null, GetVideoByTagDirection? direction = null)
         {
             var request = _apiRequestFactory.AuthorizedRequest(
