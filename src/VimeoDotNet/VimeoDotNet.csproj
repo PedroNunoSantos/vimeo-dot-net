@@ -18,9 +18,9 @@
     </description>
     <releaseNotes>Add GetAllVideoInAlbum e GetAllVideoInFolder</releaseNotes>
     <PackageTags>vimeo api</PackageTags>
-    <PackageVersion>1.0.2</PackageVersion>
-    <Version>1.0.2</Version>
-    <PackageId>VimeoDotNet</PackageId>
+    <PackageVersion>1.0.3</PackageVersion>
+    <Version>1.0.3</Version>
+    <PackageId>VimeoDotNetMb</PackageId>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
