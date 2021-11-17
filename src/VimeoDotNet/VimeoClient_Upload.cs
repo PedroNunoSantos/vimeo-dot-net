@@ -171,7 +171,27 @@ namespace VimeoDotNet
                     throw;
                 }
 
-                throw new VimeoUploadException("Error generating upload ticket.", null, ex);
+                throw new VimeoUploadException("Error on pull uploading", null, ex);
+            }
+        }
+
+        /// <inheritdoc />
+        public async Task<Video> UploadReplacePullLinkAsync(string link, long clipId, long size, string name = null)
+        {
+            try
+            {
+                var request = GeneratePullReplaceUploadRequest(size, clipId, link, name);
+
+                return await ExecuteApiRequest<Video>(request).ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                if (ex is VimeoApiException)
+                {
+                    throw;
+                }
+
+                throw new VimeoUploadException("Error on pull uploading", null, ex);
             }
         }
 
@@ -475,6 +495,31 @@ namespace VimeoDotNet
             request.Body = new StringContent(json, Encoding.UTF8, "application/json");
             return request;
         }
+
+     
+        // Aggiunta MB
+        private IApiRequest GeneratePullReplaceUploadRequest(long size, long clipId, string link, string name = null)
+        {
+            ThrowIfUnauthorized();
+
+            var request = _apiRequestFactory.GetApiRequest(AccessToken);
+            request.ApiVersion = ApiVersions.v3_4;
+            request.Method = HttpMethod.Post;
+            request.Path = Endpoints.VideoVersions;
+            request.UrlSegments.Add("clipId", clipId.ToString());
+
+            if (string.IsNullOrEmpty(name))
+            {
+                name = DateTime.Now.ToString("yyyyMMdd-HH-mm-ss");
+            }
+
+            // Create the json string
+            string json = "{\"file_name\":\"" + name + "\",\"upload\":{\"status\":\"in_progress\",\"size\":\"" + size + "\",\"approach\":\"pull\",\"limk\": \"" + link + "\"}}";
+
+            request.Body = new StringContent(json, Encoding.UTF8, "application/json");
+            return request;
+        }
+        // fine aggiunta MB
 
         private IApiRequest GenerateUploadTicketRequest(string type = "streaming")
         {

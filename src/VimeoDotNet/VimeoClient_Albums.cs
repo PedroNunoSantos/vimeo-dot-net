@@ -129,5 +129,44 @@ namespace VimeoDotNet
 
             return await ExecuteApiRequest(request).ConfigureAwait(false);
         }
+
+        /// <inheritdoc />
+        public async Task<Paginated<Video>> GetAllVideoInAlbumAsync(UserId userid, int albumId, int? page = null,
+            int? perPage = null, GetVideoByTagSort? sort = null, GetVideoByTagDirection? direction = null)
+        {
+            var request = _apiRequestFactory.AuthorizedRequest(
+                AccessToken,
+                HttpMethod.Get,
+                Endpoints.GetCurrentUserEndpoint(Endpoints.UserAlbumVideos),
+                new Dictionary<string, string>
+                {
+                    {"albumId", albumId.ToString()}
+                }
+            );
+
+            if (page.HasValue)
+            {
+                request.Query.Add("page", page.ToString());
+            }
+
+            if (perPage.HasValue)
+            {
+                request.Query.Add("per_page", perPage.ToString());
+            }
+
+            if (sort.HasValue)
+            {
+                request.Query.Add("sort", sort.Value.GetStringValue());
+            }
+
+            if (direction.HasValue)
+            {
+                request.Query.Add("direction", direction.Value.GetStringValue());
+            }
+
+            return await ExecuteApiRequest<Paginated<Video>>(request).ConfigureAwait(false);
+
+        }
+
     }
 }
