@@ -104,3 +104,4 @@ UpgradeLog*.XML
 .vs/
 
 .DS_Store
+/src/.publish/push-nuget.ps1
