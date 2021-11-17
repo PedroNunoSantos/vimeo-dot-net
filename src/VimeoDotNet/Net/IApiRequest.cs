@@ -60,17 +60,17 @@ namespace VimeoDotNet.Net
         bool ExcludeAuthorizationHeader { get; set; }
 
         /// <summary>
-        /// 
+        /// Fields
         /// </summary>
         List<string> Fields { get; }
 
         /// <summary>
-        ///
+        /// Query
         /// </summary>
         IDictionary<string, string> Query { get; }
 
         /// <summary>
-        ///
+        /// UrlSegments
         /// </summary>
         IDictionary<string, string> UrlSegments { get; }
 

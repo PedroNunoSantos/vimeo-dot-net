@@ -58,13 +58,13 @@ namespace VimeoDotNet.Models
         [JsonProperty(PropertyName = "link")]
         public string Link { get; set; }
 
-        ///
+        /// <summary>
         /// The picture's resource key string.
-        ///
+        /// </summary>
         [PublicAPI]
         [JsonProperty(PropertyName = "resource_key")]
         public string ResourceKey { get; set; }
-        
+
         /// <summary>
         /// The type of picture:
         /// </summary>

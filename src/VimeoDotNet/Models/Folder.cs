@@ -64,29 +64,45 @@ namespace VimeoDotNet.Models
         [PublicAPI]
         [JsonProperty(PropertyName = "link")]
         public string Link { get; set; }
-        
-        
+
+
         [PublicAPI]
         [JsonProperty(PropertyName = "metadata")]
         public FolderMetadata Metadata { get; set; }
 
 
         /// <summary>
-        /// Return project id if exists
+        /// Return the parent project id if exists
+        /// </summary>
+        /// <returns>ProjectId or null</returns>
+        [PublicAPI]
+        public long? GetParentProjectId()
+        {
+            return InnerGetProjectId(Metadata?.Connections?.ParentFolder?.Uri);
+        }
+
+        /// <summary>
+        /// Return the project id if exists
         /// </summary>
         /// <returns>ProjectId or null</returns>
         [PublicAPI]
         public long? GetProjectId()
+        {
+            return InnerGetProjectId(Uri);
+        }
+
+        private long? InnerGetProjectId(string uri)
         {
             if (string.IsNullOrEmpty(Uri))
             {
                 return null;
             }
 
-            var match = RegexFoldersUri.Match(Uri);
+            Match match = RegexFoldersUri.Match(uri);
             if (match.Success)
             {
-                return long.Parse(match.Groups["projectId"].Value);
+                long id = long.Parse(match.Groups["projectId"].Value);
+                return id;
             }
 
             return null;
