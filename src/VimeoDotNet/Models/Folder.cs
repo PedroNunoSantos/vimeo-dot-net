@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 
@@ -63,5 +64,36 @@ namespace VimeoDotNet.Models
         [PublicAPI]
         [JsonProperty(PropertyName = "link")]
         public string Link { get; set; }
+        
+        
+        [PublicAPI]
+        [JsonProperty(PropertyName = "metadata")]
+        public FolderMetadata Metadata { get; set; }
+
+
+        /// <summary>
+        /// Return project id if exists
+        /// </summary>
+        /// <returns>ProjectId or null</returns>
+        [PublicAPI]
+        public long? GetProjectId()
+        {
+            if (string.IsNullOrEmpty(Uri))
+            {
+                return null;
+            }
+
+            var match = RegexFoldersUri.Match(Uri);
+            if (match.Success)
+            {
+                return long.Parse(match.Groups["projectId"].Value);
+            }
+
+            return null;
+        }
+
+        private static readonly Regex RegexFoldersUri = new Regex(@"/projects/(?<projectId>\d+)/?$");
+
+
     }
 }
