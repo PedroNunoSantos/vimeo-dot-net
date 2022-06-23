@@ -18,6 +18,9 @@ COMPLETED
 - User video and video list retrieval
 - Chunked video upload with retry capability
 - Video metadata update
+- Fixed to fetch thumbnail property
+- Allow to fetch all videos from folder
+- Allow to delete thumbnail
 
 API COVERAGE
 ----
@@ -38,6 +41,8 @@ API COVERAGE
 | Get a list of videos uploaded by a user. | :heavy_check_mark: | `GetVideosAsync()` |
 | Begin the video upload process. | :heavy_check_mark: | `GetUploadTicketAsync()` |
 | Check if a user owns a clip. | :heavy_check_mark: | `GetUserVideo()` |
+| Get a all videos uploaded into the folder by user. | :heavy_check_mark: | `GetAllVideosFromFolderAsync()` |
+| Delete a thumbnail. | :heavy_check_mark: | `DeleteThumbnailVideoAsync()` |
 
 
 

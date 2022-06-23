@@ -46,6 +46,7 @@
         public const string MeAlbums = "/me/albums";
         public const string UserAlbums = "/users/{userId}/albums";
         public const string UserChannels = "/users/{userId}/channels";
+        public const string MeChannels = "/me/channels";
         public const string MeAlbum = "/me/albums/{albumId}";
         public const string UserAlbum = "/users/{userId}/albums/{albumId}";
         public const string UserAlbumVideos = "/users/{userId}/albums/{albumId}/videos";
@@ -104,6 +105,10 @@
         public const string Tag = "/tags/{tagId}";
 
         public const string MeProjectVideo = "/me/projects/{projectId}/videos/{clipId}";
+        public const string ProjectVideo = "/users/{userId}/projects/{projectId}/videos/{clipId}";
+        public const string ProjectVideos = "/users/{userId}/projects/{projectId}/videos";
+
+        public const string Thumbnail = "/videos/{clipId}/pictures/{pictureId}";
 
         public static string GetCurrentUserEndpoint(string endpoint)
         {
